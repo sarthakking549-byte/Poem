@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Poetry Portal</title>
+</head>
+<body>
+
+    <header>
+        <h1>Kavita (कविता)</h1>
+        <p>Upload and share your poetry directly from your phone's storage.</p>
+    </header>
+    
+    <hr>
+
+    <form action= https://form.typeform.com/to/q51koojl method="POST" enctype="multipart/form-data">
+        
+        <h3>Submit Your Poem</h3>
+
+        <p>
+            <label for="poet-name">Your Name / Pen Name:</label><br>
+            <input type="text" id="poet-name" name="poet_name" placeholder="Anonymous Poet" required>
+        </p>
+
+        <p>
+            <label for="poem-title">Poem Title:</label><br>
+            <input type="text" id="poem-title" name="poem_title" placeholder="Title of your piece" required>
+        </p>
+
+        <p>
+            <label for="poem-file">Upload Poem File (.txt or document):</label><br>
+            <input type="file" id="poem-file" name="poem_file" accept=".txt,.doc,.docx" required>
+        </p>
+
+        <p>
+            <label for="poem-backup">Or type/paste your poem here (optional):</label><br>
+            <textarea id="poem-backup" name="poem_text" rows="8" cols="40" placeholder="Type your stanzas here..."></textarea>
+        </p>
+
+        <p>
+            <button type="submit">Publish Poem</button>
+        </p>
+
+    </form>
+
+    <hr>
+
+    <footer>
+        <p>Created entirely on mobile using GitHub.</p>
+    </footer>
+
+</body>
+</html>
