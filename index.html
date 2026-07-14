@@ -50,7 +50,7 @@
             font-size: 2.5rem;
             color: var(--accent);
             margin-bottom: 0.5rem;
-            letter-wide: 0.05em;
+            letter-spacing: 0.05em;
         }
 
         header p {
@@ -221,6 +221,7 @@
 
             <div class="form-group">
                 <label for="poem-backup">Or type/paste your poem here</label>
+                <input type="hidden" id="hiddenPoemContent" name="uploaded_poem_content">
                 <textarea id="poem-backup" name="poem_text" rows="6" placeholder="Write your heart out here..."></textarea>
             </div>
 
@@ -243,6 +244,7 @@
         const displayArea = document.getElementById('fileContentDisplay');
         const form = document.getElementById('poetryForm');
         const textBackup = document.getElementById('poem-backup');
+        const hiddenContent = document.getElementById('hiddenPoemContent');
 
         // 1. Live File Reader Feature
         fileInput.addEventListener('change', function(e) {
@@ -251,16 +253,16 @@
 
             const reader = new FileReader();
             reader.onload = function(evt) {
-                displayArea.textContent = evt.target.result;
-                previewContainer.style.display = 'block'; // Unhides preview container
-                textBackup.removeAttribute('required');  // If file exists, typing area is optional
+                const text = evt.target.result;
+                displayArea.textContent = text;
+                hiddenContent.value = text; // Safely copies file text to send via pure form layout
+                previewContainer.style.display = 'block'; 
             };
             reader.readAsText(file);
         });
 
         // 2. Safe Submission Validator
         form.addEventListener('submit', function(e) {
-            // Checks if both fields are empty before letting it send to Formspree
             if (!fileInput.value && !textBackup.value.trim()) {
                 e.preventDefault();
                 alert('Please upload a .txt file OR type a poem in the textarea before publishing!');
